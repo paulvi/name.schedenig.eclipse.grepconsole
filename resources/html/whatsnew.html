@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Grep Console - User Guide</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+	<style media="screen" type="text/css">
+		body { font-family: sans-serif; font-size: 8pt }
+		h1 { font-size: 120%; font-weight: bold }
+	</style>
+</head>
+
+<body>
+	<h1>What's New in Grep Console</h1>
+
+	<h2>Version 3.6</h2>
+	
+	<dl>
+		<dt>Statistics</dt>
+		
+		<dd>
+			<p>
+				Expression occurences can be counted and displayed in a separate view.
+			</p>
+		</dd>
+	</dl>
+	
+	<h2>Version 3.5</h2>
+	
+	<dl>
+		<dt>GUI improvements</dt>
+		
+		<dd>
+			<p>
+				Various user interface details were changed to be consistent with the
+				official Eclipse guidelines. The expression dialogue was restructured
+				into tabs.
+			</p>
+		</dd>
+		
+		<td>Terminology changes</td>
+		
+		<dd>
+			<p>
+				Link behaviours are now referred to as "actions". "Link" is still used
+				to refer to the clickable portions of texts to which actions can be
+				assigned.
+			</p>
+		</dd>
+		
+		<dt>Popup notifications</dt>
+		
+		<dd>
+			<p>
+				Expressions can now trigger popup notifications which display messages
+				based on the matched console lines even when Eclipse is not currently
+				the active window. An action which is triggered when the user clicks the
+				popup can be configured.
+			</p>
+		</dd>
+		
+		<dt>Sound notifications</dt>
+		
+		<dd>
+			<p>
+				Expressions can now play sounds when they are matched.
+			</p>
+		</dd>
+	</dl>
+	
+	<h2>Version 3.4</h2>
+
+	<dl>
+		<dt>Quick expressions</dt>
+		
+		<dd>
+			<p>
+				Expression items may now have a quick expression which is tested before
+				the main expression is evaluated.
+			</p>
+		</dd>
+		
+		<dt>Base paths for file links</dt>
+		
+		<dd>
+			<p>
+				A base path for relative file links can now be specified. By default,
+				the project's root directory is used.
+			</p>
+		</dd>
+		
+		<dt>http:// prefix for URL links</dt>
+		
+		<dd>
+			<p>
+				URLs without a schema prefix can now be used in URL links. They will
+				automatically be prefixed with "http://".
+			</p>
+		</dd>
+		
+		<dt>Offsets for file and Java links</dt>
+		
+		<dd>
+			<p>
+				For file and Java links, an optional character offset can be specified
+				to position the cursor at a specific column in the editor.
+			</p>
+		</dd>
+		
+		<dt>Eclipse variables in link pattern fields</dt>
+		
+		<dd>
+			<p>
+				Pattern strings in link configurations can reference use Eclipse
+				variables (as used in the arguments tab of the launch configuration
+				dialogue).
+			</p>
+		</dd>
+		
+		<dt>Custom names for expression groups</dt>
+		
+		<dd>
+			<p>
+				Groups of expression items can now be assigned custom names. These names
+				can be used in link pattern strings.
+			</p>
+		</dd>
+		
+		<dt>Configurable colours in the Grep View</dt>
+		
+		<dd>
+			<p>
+				By default, the Grep View now uses the same colours as the Eclipse
+				console. These colours can be changed in the preferences.
+			</p>
+		</dd>
+		
+		<dt>Configurable link modifier key</dt>
+		
+		<dd>
+			<p>
+				On Mac systems, the link modifier key is now Command instead of Ctrl.
+				The modifier key can be changed in the preferences.
+			</p>
+		</dd>
+	</dl>
+	
+	<h2>Version 3.3</h2>
+	
+	<dl>
+		<dt>Autostart links</dt>
+		
+		<dd>
+			<p>
+				Items can specify autostart links, which will open automatically
+				whenever a line matching the item's regular expression is written to the
+				console. Autostart links require the Grep View to work.
+			</p>
+		</dd>
+		
+		<dt>Line rewriting</dt>
+		
+		<dd>
+			<p>
+				Lines filtered to the Grep View can be completely rewritten. Rewritten
+				lines can include any parts of the original line and may have different
+				styles and links than the original console output.
+			</p>
+		</dd>
+	</dl>
+	
+	<h2>Version 3.2</h2>
+
+	<dl>
+		<dt>Multiple matches per line</dt>
+		
+		<dd>
+			<p>
+				Expressions may now match multiple substrings per line. Previously, only
+				the last match in a line was recognised.
+			</p>
+		</dd>
+		
+		<dt>Links</dt>
+		
+		<dd>
+			<p>
+				Expressions and capture groups may now be assigned links. These links
+				will be executed when the matched substring is clicked on while the
+				CTRL key is pressed. Different link types can be used to open text files
+				or Java types in the Eclipse editor, open URLs in a browser or execute
+				scripts and system commands.
+			</p>
+		</dd>
+
+		<dt>Pattern help</dt>
+		
+		<dd>
+			<p>
+				The expression dialog now contains a web link to the Java Pattern API
+				documentation (explaining the regular expression syntax).
+			</p>
+		</dd>
+	</dl>
+		
+	<h2>Version 3.1</h2>
+
+	<dl>
+		<dt>"Unless" expression</dt>
+		
+		<dd>
+			<p>
+				An optional second regular expression can be configure for each item to
+				prevent the item from being considered a match for certain strings even
+				if the main expression matches.
+			</p>
+		</dd>
+		
+		<dt>Case sensitivity flag<dt>
+		
+		<dd>
+			<p>
+				Case sensitivity of grep expressions can now easily be toggled via a
+				checkbox.
+			</p>
+		</dd>
+		
+		<dt>Jump to line</dt>
+		
+		<dd>
+			<p>
+				The Grep View context menu now provides an action for jumping to the
+				selected line in the original console.
+			</p>
+		</dd>
+		
+		<dt>Support for more run configurations</dt>
+		
+		<dd>
+			<p>
+				The Grep Console tab is now available for JUnit, Eclipse RCP and CDT
+				launch configurations. 
+			</p>
+		</dd>
+	</dl>
+		
+	<h2>Version 3.0</h2>
+	
+	<dl>
+		<dt>New ID</dt>
+		
+		<dd>
+			<p>
+				The Grep Console bundles and packages have new IDs. That means that if
+				you had an old version of Grep Console installed, it was not replaced
+				when you installed 3.0. In this case, it is recommended that you
+				uninstall your old version manually. Your old settings are automatically
+				imported by Grep Console 3.0. 
+			</p>
+		</dd>
+		
+		<dt>Folders</dt>
+		
+		<dd>
+			<p>
+				Grep expressions can now be arranged in folders for better overview.
+				Each folder can be enabled or disabled as a whole.
+			</p>
+		</dd>
+		
+		<dt>Styles</dt>
+		
+		<dd>
+			<p>
+				Highlighting settings are now configured separately from the grep
+				expressions that use them. These styles can be shared among multiple
+				grep expressions.
+			</p>
+		</dd>
+		
+		<dt>Import/Export</dt>
+		
+		<dd>
+			<p>
+				Grep expressions and styles can now be exported to XML files for sharing
+				or transfer to other Eclipse workspaces.
+			</p>
+		</dd>
+		
+		<dt>Launch Configuration Support</dt>
+		
+		<dd>
+			<p>
+				Grep folders and expressions are configured globally, but they can
+				be individually enabled or disabled for each launch configuration.
+			</p>
+		</dd>
+		
+		<dt>Grep View</dt>
+		
+		<dd>
+			<p>
+				The Grep View displays a console like text field that shows only a
+				subset of <emph>filtered</emph> expressions from the standard Eclipse
+				console.
+			</p>
+		</dd>
+		
+		<dt>Match length settings (3.0.1)</dt>
+		
+		<dd>
+			<p>
+				The length of string lines that are tested with the regular expression
+				matchers may be configured in the preferences. This became necessary as
+				very long lines could have a significant performance impact when tested
+				for the Grep View.
+			</p>
+		</dd>
+	</dl>
+</body>
+</html>

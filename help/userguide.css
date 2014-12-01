@@ -1,0 +1,8 @@
+body { font-family: sans-serif }
+emph { font-style: italic }
+h1 { text-align: center }
+h2 { font-size: 150%; font-weigt: bold }
+h3 { font-size: 110%; font-weigt: bold }
+h4 { font-size: 100%; font-weigt: bold }
+.subheading { text-align: center }
+.headerlogo { text-align: center }

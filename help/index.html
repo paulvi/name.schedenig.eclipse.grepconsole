@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Grep Console - User Guide</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" href="userguide.css" type="text/css" />
+</head>
+
+<body>
+	<h1>Grep Console - User Guide</h1>
+	
+	<p class="subheading">Version 3.6</p>
+	
+	<p class="headerlogo">
+		<img src="img/logo_64.png" />
+	</p>
+	
+	<a name="contents">
+		<h2>Contents</h2>
+	</a>
+	
+	<ol>
+		<li><a href="#overview">Overview</a></li>
+		<li><a href="#whats-new">What's New</a></li>
+		<li><a href="#installation">Installation</a></li>
+		<li><a href="#updating">Updating</a></li>
+		<li><a href="#console-actions">Console Actions</a></li>		
+		<li><a href="#managing-grep-expressions">Managing Grep Expressions</a></li>
+		<li><a href="#editing-folders">Editing Folders</a></li>
+		<li><a href="#editing-grep-expressions">Editing Grep Expressions</a>
+			<ul>
+				<li><a href="#editing-grep-expressions-general">General</a></li>
+				<li><a href="#editing-grep-expressions-styles-links">Styles &amp; Links</a></li>
+				<li><a href="#editing-grep-expressions-grep-view">Grep View</a></li>
+				<li><a href="#editing-grep-expressions-notifications">Notifications</a></li>
+				<li><a href="#editing-grep-expressions-statistics">Statistics</a></li>
+			</ul>
+		</li>
+		<li><a href="#pattern-strings">Pattern Strings</a></li>
+		<li><a href="#managing-styles">Managing Styles</a></li>
+  	<li><a href="#editing-styles">Editing Styles</a></li>
+  	<li><a href="#editing-actions">Editing Actions</a></li>
+  	<li><a href="#launch-configurations">Launch Configurations</a></li>
+  	<li><a href="#preferences">Preferences</a></li>
+		<li><a href="#grep-view">Grep View</a></li>
+		<li><a href="#statistics-view">Statistics View</a></li>
+		<li><a href="#contact">Contact</a></li>
+		<li><a href="#license">Licence</a></li>
+	</ol>
+	
+	<a name="overview">
+		<h2>Overview</h2>
+	</a>
+	
+	<p>
+		Developers usually have their programs write log and debug information to
+		the standard output during coding and testing. This results in a lot of text 
+		being printed to Eclipse's console view, often more than can be easily 
+		surveyed. Since at any given time, only a small part of this information is 
+		of primary interest to the developer, a tool which highlights specific lines 
+		or words can significantly increase the readability of this output.
+	</p>
+	
+	<p>
+		Grep Console allows you to define a series of regular expressions which will 
+		be tested against the console output. Each expression matching a line will 
+		affect the style of either the entire line or parts of it. For example, 
+		error messages could be set to show up with a red background, or integer 
+		values showing the state of a certain variable could be rendered in bold 
+		font. 
+	</p>
+	
+  <a name="whats-new">
+		<h2>What's New</h2>
+	</a>
+	
+	<p>
+		The following features have been added to Grep Console during the 3.x
+		version branch:
+	</p>
+	
+	<dl>
+		<dt>Folders (3.0)</dt>
+		
+		<dd>
+			<p>
+				Grep expressions can now be arranged in folders for better overview.
+				Each folder can be enabled or disabled as a whole.
+			</p>
+		</dd>
+		
+		<dt>Styles (3.0)</dt>
+		
+		<dd>
+			<p>
+				Highlighting settings are now configured separately from the grep
+				expressions that use them. These styles can be shared among multiple
+				grep expressions.
+			</p>
+		</dd>
+		
+		<dt>Import/Export (3.0)</dt>
+		
+		<dd>
+			<p>
+				Grep expressions and styles can now be exported to XML files for sharing
+				or transfer to other Eclipse workspaces.
+			</p>
+		</dd>
+		
+		<dt>Launch Configuration Support (3.0)</dt>
+		
+		<dd>
+			<p>
+				Grep folders and expressions are configured globally, but they can
+				be individually enabled or disabled for each launch configuration.
+			</p>
+		</dd>
+		
+		<dt>Grep View (3.0)</dt>
+		
+		<dd>
+			<p>
+				The Grep View displays a console like text field that shows only a
+				subset of <emph>filtered</emph> expressions from the standard Eclipse
+				console.
+			</p>
+		</dd>
+	
+		
+    <dt>"Unless" expressions (3.1)</dt>
+		
+		<dd>
+			<p>
+				An optional second regular expression can be configure for each item to
+				prevent the item from being considered a match for certain strings even
+				if the main expression matches.
+			</p>
+		</dd>
+		
+		<dt>Case sensitivity (3.1)</dt>
+		
+		<dd>
+			<p>
+				Case sensitivity of grep expressions can now easily be toggled via a
+				checkbox.
+			</p>
+		</dd>
+		
+		<dt>Jump to line (3.1)</dt>
+		
+		<dd>
+			<p>
+				The Grep View context menu now provides an action for jumping to the
+				selected line in the original console.
+			</p>
+		</dd>
+		
+		<dt>Support for more run configurations (3.1)</dt>
+		
+		<dd>
+			<p>
+				The Grep Console tab is now available for JUnit, Eclipse RCP and CDT
+				launch configurations.
+			</p>
+		</dd>
+		
+		<dt>Multiple matches per line (3.2)</dt>
+		
+		<dd>
+			<p>
+				Expressions may now match multiple substrings per line. Previously, only
+				the last match in a line was recognised.
+			</p>
+		</dd>
+		
+		<dt>Links (3.2)</dt>
+		
+		<dd>
+			<p>
+				Expressions and capture groups may now be assigned links. These links
+				will be executed when the matched substring is clicked on while the
+				CTRL key is pressed. Different link types can be used to open text files
+				or Java types in the Eclipse editor, open URLs in a browser or execute
+				scripts and system commands.
+			</p>
+		</dd>
+
+		<dt>Pattern help (3.2)</dt>
+		
+		<dd>
+			<p>
+				The expression dialogue now contains a web link to the Java Pattern API
+				documentation (explaining the regular expression syntax).
+			</p>
+		</dd>
+		
+		<dt>Autostart links (3.3)</dt>
+		
+		<dd>
+			<p>
+				Items can specify autostart links, which will open automatically
+				whenever a line matching the item's regular expression is written to the
+				console. Autostart links require the Grep View to work.
+			</p>
+		</dd>
+		
+		<dt>Line rewriting (3.3)</dt>
+		
+		<dd>
+			<p>
+				Lines shown in the Grep View can be completely rewritten. Rewritten
+				lines can include any parts of the original line and may have different
+				styles and links than the original console output.
+			</p>
+		</dd>
+		
+		<dt>Quick expressions (3.4)</dt>
+		
+		<dd>
+			<p>
+				Expression items may now have a quick expression which is tested before
+				the main expression is evaluated.
+			</p>
+		</dd>
+		
+		<dt>Base paths for file links (3.4)</dt>
+		
+		<dd>
+			<p>
+				A base path for relative file links can now be specified. By default,
+				the project's root directory is used.
+			</p>
+		</dd>
+		
+		<dt>http:// prefix for URL links (3.4)</dt>
+		
+		<dd>
+			<p>
+				URLs without a schema prefix can now be used in URL links. They will
+				automatically be prefixed with "http://".
+			</p>
+		</dd>
+		
+		<dt>Offsets for file and Java links (3.4)</dt>
+		
+		<dd>
+			<p>
+				For file and Java links, an optional character offset can be specified
+				to position the cursor at a specific column in the editor.
+			</p>
+		</dd>
+		
+		<dt>Eclipse variables in link pattern fields (3.4)</dt>
+		
+		<dd>
+			<p>
+				Pattern strings in link configurations can reference use Eclipse
+				variables (as used in the arguments tab of the launch configuration
+				dialogue).
+			</p>
+		</dd>
+		
+		<dt>Custom names for expression groups (3.4)</dt>
+		
+		<dd>
+			<p>
+				Groups of expression items can now be assigned custom names. These names
+				can be used in link pattern strings.
+			</p>
+		</dd>
+		
+		<dt>Configurable colours in the Grep View (3.4)</dt>
+		
+		<dd>
+			<p>
+				By default, the Grep View now uses the same colours as the Eclipse
+				console. These colours can be changed in the preferences.
+			</p>
+		</dd>
+		
+		<dt>Configurable link modifier key (3.4)</dt>
+		
+		<dd>
+			<p>
+				On Mac systems, the link modifier key is now Command instead of Ctrl.
+				The modifier key can be changed in the preferences.
+			</p>
+		</dd>
+		
+		<dt>GUI improvements (3.5)</dt>
+		
+		<dd>
+			<p>
+				Various user interface details were changed to be consistent with the
+				official Eclipse guidelines. The expression dialogue was restructured
+				into tabs.
+			</p>
+		</dd>
+		
+		<td>Terminology changes (3.5)</td>
+		
+		<dd>
+			<p>
+				Link behaviours are now referred to as "actions". "Link" is still used
+				to refer to the clickable portions of texts to which actions can be
+				assigned.
+			</p>
+		</dd>
+		
+		<dt>Popup notifications (3.5)</dt>
+		
+		<dd>
+			<p>
+				Expressions can now trigger popup notifications which display messages
+				based on the matched console lines even when Eclipse is not currently
+				the active window. An action which is triggered when the user clicks the
+				popup can be configured.
+			</p>
+		</dd>
+		
+		<dt>Sound notifications (3.5)</dt>
+		
+		<dd>
+			<p>
+				Expressions can now play sounds when they are matched.
+			</p>
+		</dd>
+		
+		<dt>Statistics (3.6)</dt>
+		
+		<dd>
+			<p>
+				Expression occurences can be counted and displayed in a separate view.
+			</p>
+		</dd>
+	</dl>
+	
+  <a name="installation">
+		<h2>Installation</h2>
+	</a>
+	
+	<p>
+		Grep Console requires Java 6 and Eclipse 3.4 (Ganymede) or higher.
+	</p>
+
+	<p>	
+		To install Grep Console from the Update Site, select <emph>Help/Software
+		Updates/Available Software</emph> from your Eclipse menu and click
+		<emph>Add Site</emph> to add the following URL:
+	</p>
+	
+	<blockquote>http://eclipse.schedenig.name</blockquote>
+
+	<p>
+		You can now open the site in the list of available software, check
+		Grep Console and click <emph>Install</emph> to begin the installation
+		process. Grep Console depends on the Popup Notifications plug-in, which will
+		be automatically installed from the same location..
+	</p>
+
+  <a name="updating">
+		<h2>Updating</h2>
+	</a>
+	
+	<p>
+		If you are updating from a 2.x version of Grep Console, your old settings
+		will automatically be imported.
+	</p>
+	
+	<p>
+		The package and ID names have changed in version 3. For this reason, Eclipse
+		will not automatically find updates for Grep Console 2, and after installing
+		the new version 3, the old version 2 will still be installed as well. It is
+		recommended that you uninstall the old version, and Grep Console 3 will show
+		a dialogue to remind you to do this.
+	</p>
+
+  <a name="console-actions">
+		<h2>Console Actions</h2>
+	</a>
+	
+	<p>
+		Grep Console contributes two actions to Eclipse's console views.
+		Both carry the Grep Console icon.
+	</p>
+	
+	<dl>
+		<dt><img src="img/logo_16.png" /> Manage expressions</dt>
+		
+		<dd>
+			<p>
+				This actions is available via the console's toolbar. It opens
+				a dialogue for <a href="#managing-grep-expressions">managing grep
+				expressions</a> and <a href="#managing-styles">styles</a>. The
+				expressions and styles modified via the dialogue are affected globally,
+				but the settings for enabling or disabling expressions and showing
+				them in the Grep View are specific to the current launch configuration.
+			</p>
+		</dd>
+		
+		<dt><img src="img/logo_16.png" /> Add expression</dt>
+		
+		<dd>
+			<p>
+				This action can be found in the console's right click context menu.
+				It is only available if text has been selected in the console.
+				It can be used to create a new grep expression from the selected text.
+				Selecting it opens a a sub menu listing the existing folders.
+				These entries can be used to select the target folder for the newly
+				created expression. A separate entry is available for creating a new
+				folder.
+			</p>
+			
+			<p>
+				Selecting a folder takes you directly to the 
+				<a href="#editing-grep-expressions">edit expression dialogue</a>.
+				Confirming the settings in this dialogue creates the new expression.
+			</p>
+		</dd>
+	</dl>
+	
+  <a name="managing-grep-expressions">
+		<h2>Managing Grep Expressions</h2>
+	</a>
+	
+	<p>
+		This dialogue allows you to add, edit and delete grep expressions.
+		Expressions can be arranged in folders, and can be enabled or disabled 
+		for styling, Grep View output and notifications either individually or via
+		their folders.
+	</p>
+	
+	<p>
+		The dialogue can be opened from the console, the Grep View, a launch
+		configuration or Eclipse's preferences dialogue. Depending on how the
+		dialogue
+		was opened, settings controlling whether items are enabled, disabled, shown
+		in the Grep View and trigger notifications may refer to the current launch
+		configuration or the global defaults. Folders and grep expressions
+		themselves are always stored globally and changing them will affect all
+		launch configurations equally. 
+	</p>
+	
+	<p>
+		Each expression must belong to a folder, and folders can only contain
+		expressions (that is, folders cannot be nested). The dialogue shows all
+		available folders and expressions as a tree structure.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_manage_expressions.png" />
+	</p>
+	
+	<p>
+		Threeo columns on the right side of the item tree control which items are
+		enabled for highlighting, which items are shown in the Grep View and which
+		items may trigger notifications:
+	</p>
+	
+	<table>
+		<tr>
+			<td><img src="img/checkbox_on.png" /></td>
+			<td>The item is enabled for highlighting.</td>
+		</tr>
+		<tr>
+			<td><img src="img/checkbox_off.png" /></td>
+			<td>The item is disabled for highlighting.</td>
+		</tr>
+		<tr>
+			<td><img src="img/checkbox_on_inherited.png" /></td>
+			<td>The item is enabled for highlighting (inherited from the default
+				settings).</td>
+		</tr>
+		<tr>
+			<td><img src="img/checkbox_off_inherited.png" /></td>
+			<td>The item is disabled for highlighting (inherited from the default
+				settings).</td>
+		</tr>
+		
+		<tr>
+			<td><img src="img/filter_on.png" /></td>
+			<td>The item is shown in the Grep View.</td>
+		</tr>
+		<tr>
+			<td><img src="img/filter_off.png" /></td>
+			<td>The item is not shown in the Grep View.</td>
+		</tr>
+		<tr>
+			<td><img src="img/filter_on_inherited.png" /></td>
+			<td>The item is shown in the Grep View (inherited from the
+				default settings).</td>
+		</tr>
+		<tr>
+			<td><img src="img/filter_off_inherited.png" /></td>
+			<td>The item is not shown in the Grep View (inherited from
+				the default settings).</td>
+		</tr>
+		
+		<tr>
+			<td><img src="img/notification_on.png" /></td>
+			<td>The item may trigger notifications.</td>
+		</tr>
+		<tr>
+			<td><img src="img/notification_off.png" /></td>
+			<td>The item may not trigger notifications.</td>
+		</tr>
+		<tr>
+			<td><img src="img/notification_on_inherited.png" /></td>
+			<td>The item may trigger notifications (inherited from the
+				default settings).</td>
+		</tr>
+		<tr>
+			<td><img src="img/notification_off_inherited.png" /></td>
+			<td>The item may not trigger notifications (inherited from
+				the default settings).</td>
+		</tr>
+		
+		<tr>
+			<td><img src="img/statistics_on.png" /></td>
+			<td>The item may contribute statistics.</td>
+		</tr>
+		<tr>
+			<td><img src="img/statistics_off.png" /></td>
+			<td>The item may not contribute statistics.</td>
+		</tr>
+		<tr>
+			<td><img src="img/statistics_on_inherited.png" /></td>
+			<td>The item may contribute statistics (inherited from the
+				default settings).</td>
+		</tr>
+		<tr>
+			<td><img src="img/statistics_off_inherited.png" /></td>
+			<td>The item may not contribute statistics (inherited from
+				the default settings).</td>
+		</tr>
+	</table>
+	
+	<p>
+		Clicking any of these icons will cycle through the available settings in
+		the order <emph>inherited</emph>/<emph>enabled</emph>/<emph>disabled</emph>.
+		Nested items can only effectively be enabled if the group to which they
+		belong is enabled as well. If an item's parent group is disabled, the item's
+		corresponding icon is greyed out, signalling that its setting is
+		ineffective.
+		The <emph>inherited</emph> setting is only available if a launch
+		configuration is associated with the dialogue. Otherwise, the items' default
+		settings are edited directly via these icons.
+	</p>
+	
+	<p>
+		For highlighting, Grep View output and notifications, folders and
+		expressions are evaluated in the order shown in this list. Items can be
+		reordered via drag and drop. Right clicking an item opens a context menu
+		which can be used to cut, copy and paste items. 
+	</p>
+	
+	<p>
+		The dialogue provides the following actions:
+	</p>
+	
+	<dl>
+		<dt>Add folder</dt>
+		
+		<dd>
+			<p>
+				Creates a new folder. Opens the
+				<a href="#editing-folders">edit folder dialogue</a>.
+			</p>
+		</dd>
+		
+		<dt>Add expression</dt>
+		
+		<dd>
+			<p>
+				Creates a new grep expression in the currently selected folder.
+				Opens the
+				<a href="#editing-grep-expressions">edit expression dialogue</a>.
+			</p>
+		</dd>
+		
+		<dt>Edit</dt>
+		
+		<dd>
+			<p>
+				Edits the currently selected folder or grep expression via the
+				matching dialogue. This action can also be triggered by double clicking
+				an item in the tree.
+			</p>
+		</dd>
+		
+		<dt>Remove</dt>
+		
+		<dd>
+			<p>
+				Deletes the currently selected folder or grep expression. This
+				action can also be triggered by pressing the <emph>del</emph> key.
+			</p>
+		</dd>
+		
+		<dt>Load</dt>
+		
+		<dd>
+			<p>
+				Loads folders and grep expressions from a file and adds them to
+				the current tree.
+			</p>
+		</dd>
+		
+		<dt>Save selected</dt>
+		
+		<dd>
+			<p>
+				Saves the currently selected folders and grep expressions to a file.
+			</p>
+		</dd>
+		
+		<dt>Save all</dt>
+		
+		<dd>
+			<p>
+				Saves all folders and grep expressions to a file.
+			</p>
+		</dd>
+	</dl>
+	
+	<p>
+		Right clicking an item in the tree opens a context menu providing
+		cut/copy/paste actions. Items can also be rearranged via drag and drop.
+	</p>
+	
+	<p>
+		A panel below the tree displays a live preview of the configured
+		expressions. The text content of the preview is taken from the active
+		console, if available. Otherwise, a default text is displayed. The text can
+		be freely edited, and the right click context menu provides actions to load
+		and save the default text. This context menu also includes an action to
+		create a new grep expression from the text currently selected in the
+		preview. Also, the colour scheme for the preview can be changed from the
+		one used by the Eclipse console to the one used by the Grep View.
+	</p>
+	
+	<p>
+		All settings edited in this dialogue are only saved after you click the
+		<emph>OK</emph> button. Clicking <emph>Cancel</emph> instead will discard
+		all changes.
+	</p>
+	
+  <a name="editing-folders">
+		<h2>Editing Folders</h2>
+	</a>
+	
+	<p>
+		This dialogue allows the editing of a folder.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_edit_folder.png" />
+	</p>
+
+	<p>
+		The folder's name can be changed via the text field. Check boxes below
+		the text field can be used to set the default values for whether the
+		folder is enabled for highlighting, for output to the Grep View and for
+		triggering notifications.
+	</p>
+	
+  <a name="editing-grep-expressions">
+		<h2>Editing Grep Expressions</h2>
+	</a>
+	
+	<p>
+		This dialogue allows the editing of a grep expression.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_edit_expression_general.png" />
+	</p>
+	
+	<p>
+		The content of the dialogue is spread across a number of tabs. At the top
+		of the dialogue, the regular expression can be viewed and edited regardless
+		of the selected tab. If the entered
+		expression is invalid, it is shown in red font, and the tool tip (displayed
+		when the mouse cursor hovers over the text field for a few seconds) shows
+		an error message.
+	</p>
+	
+	<p>
+		As with the expressions dialogue, all settings edited in this dialogue are only
+		saved after you click the <emph>OK</emph> button. Clicking
+		<emph>Cancel</emph> instead will discard all changes.
+	</p>
+	
+	<a name="editing-grep-expressions-general">
+		<h3>General</h3>
+	</a>
+	
+	<p>
+		The top section of this tab contains a series of text fields. Here, an
+		optional name for the expression can be configured, and a quick and an
+		"unless" expression can be set.
+	</p>
+	
+	<p>
+		If a quick expression has been set for an item, that expression is tested
+		first, and only if it matches is the main expression tested. If a quick
+		expression is specified, the main expression is evaluated on the entire
+		line of text, disregarding the length limits configured in the preferences.
+	</p>
+	
+	<p>
+		If a quick expression is configured and the expression is
+		matched by a line, the item is not considered a match for the line, even if
+		the main expression matches.
+	</p>
+	
+	<p>
+		A checkbox can be used to specify whether the regular expressions should be
+		treated case sensitively. By default, case sensitivity is turned on. The
+		<emph>Pattern help</emph> line opens a browser to show the regular
+		expression help page from the Java API documentation.
+	</p>
+	
+	<p>
+		In the <emph>Defaults</emph> section, checkboxes can be used to configure
+		whether lines matching the specified expression should be styled in the
+		console, shown in the Grep View, and be used to trigger notifications by
+		default. These defaults can be overridden by individual settings for each
+		launch configuration. 
+	</p>
+	
+	<a name="editing-grep-expressions-styles-links">
+		<h3>Styles &amp; Links</h3>
+	</a>
+	
+	<p>
+		This tab configures the visual style of lines matched by the regular
+		expression, along with clickable links that may be placed in the console
+		output.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_edit_expression_styles_links.png" />
+	</p>
+	
+	<p>
+		The left table below the header section shows a list of all available
+		capture groups and their assigned styles and link actions. Each expression always
+		has at least one capture group labeled <emph>Whole line</emph> which can be
+		used to assign a style to an entire line of matching text. For each capture
+		group in the regular expression (defined by surrounding part of the
+		expression with parantheses), an additional entry is provided, allowing you
+		to assign styles specifically to the corresponding parts of matching lines.
+		Please refer to the official
+		<a href="http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html" target="_blank">Java API documentation</a>
+		for the <code>Pattern</code> class for details on capture groups and
+		advanced regular expressions. 
+	</p>
+
+	<p>
+		Link actions can be edited by double clicking the corresponding cell in the
+		rightmost column, which will open the
+		<a href="#editing-links">action dialogue</a>. Right clicking on a link
+		cell will show a context menu for copying and pasting actions. In the Eclipse
+		console and Grep View, links are available when holding down the link
+		modifier key, which can be configured in the preferences and defaults to
+		Ctrl on Windows and Linux and to Command on Mac systems.
+		This will turn the mouse cursor into a link cursor when hovering over a
+		link. Left clicking will open the link and perform the configured action.
+	</p>
+
+	<p>
+		Groups may be renamed by double clicking their label in the left column.
+		Named columns can be accessed by their name in action parameters (see below).
+		The tooltip hint for a group will always display the original label.
+	</p>
+
+	<p>
+		The table to the right provides a list of all available styles. Each style
+		is coupled with a small preview icon displaying its foreground and
+		background colours. Selecting a style shows a detailed preview below the
+		table. The first item in the table is the null style, which can be used to
+		assign no style at all to a group.
+	</p>
+	
+	<p>
+		The currently selected style can be assigned to the currently selected
+		group (in the left table) by double clicking the style or via the
+		<emph>Assign</emph> button. Additional buttons for style management are
+		available and correspond to their counterparts in the
+		<a href="#managing-styles">styles dialogue</a>.
+	</p>
+	
+	<p>
+		If a rewrite expression has been specified on the <emph>Grep View</emph>
+		tab, the left table also includes
+		assignments for the entire rewritten line and for any additional groups that
+		may have been specified in the expression. These also can be assigned styles
+		and link actions.  
+	</p>
+	
+	<p>
+		Below the styles and links table, a checkbox controls whether any style that
+		may already be set on the original console line should be removed before
+		applying Grep Console's styles. For example, Eclipse by default applies
+		specific styles to stderr output and stack traces. 
+	</p>
+	
+	<p>
+		A preview in the lower left area of the dialogue provides a preview of the
+		current expression's highlighting settings. Like the preview field in the
+		<a href="#managing-grep-expressions">expressions dialogue</a>, it can be
+		edited and provides a right click context menu to load and save the default
+		preview text. This menu also provides an action to use the current selection
+		in the preview text field as the item's regular expression.
+	</p>
+	
+	
+	<a name="editing-grep-expressions-grep-view">
+		<h3>Grep View</h3>
+	</a>
+
+	<p>
+		This tab configures how lines matching the specified expression are
+		displayed in the Grep View. This only applies if the item has been enabled
+		for Grep View output (via the default settings on the <emph>General</emph>
+		tab and/or any launch configuration specific settings).
+	</p>
+		
+	<p align="center">
+		<img src="img/screen_edit_expression_grep_view.png" />
+	</p>
+	
+	<p>
+		If the expression is used to show lines in the Grep View, a rewrite
+		expression can be specified to change the line that is shown in the Grep
+		View. The expression can contain any regular strings. Additionally, index
+		expressions in curly braces ("{0}, "{1}", "{2}, etc.) can be used to include
+		parts from the original line in the rewritten line. "{0}" is replaced with
+		the entire original line, while higher numbers refer to the corresponding
+		capture groups in the regular expression, if any have been specified. Like
+		in regular expressions, parantheses ('(' and ')') can be used to denote
+		groups, which then can be assigned styles and link actions on the
+		<emph>Styles and Links</emph> tab. Rewritten
+		lines must be styled specifically and are not subject to the standard styles
+		assigned to lines in the original console and all non-rewritten lines in the
+		Grep View. The backslash acts as an escape character: "\(" outputs an
+		opening paranthesis instead of starting a new group. "\\" can be used to
+		include the backslash character in the output.
+	</p>
+	
+	<a name="editing-grep-expressions-notifications">
+		<h3>Notifications</h3>
+	</a>
+	
+	<p>
+		A matched line of text may trigger a number of notifications, which can be
+		configured in this tab.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_edit_expression_notifications.png" />
+	</p>
+	
+	<h4>Popup notification:</h4>
+	
+	<p>
+		Popup notifications display a popup window on the screen when a console line
+		is matched. The title and message texts for the popup can be configured
+		using <a href="#pattern-strings">pattern strings</a>.
+	</p>
+	
+	<p>
+		By default, a click on the popup window will active the Eclipse window. A
+		link action can be configured to specify a different behaviour when the
+		popup is clicked.
+	</p>
+	
+	<h4>Sound notification:</h4>
+	
+	<p>
+		A sound file can be selected to play whenever a console line matches the
+		specified expression. Sound files of types WAV, AIF and AU are supported.
+	</p>
+	
+	<h4>Autostart action:</h4>
+	
+	<p>
+		If an autostart action is configured, the action will be executed
+		automatically as soon as a line matching the regular expression is detected.
+	</p>
+	
+	<a name="editing-grep-expressions-statistics">
+		<h3>Statistics</h3>
+	</a>
+	
+	<p>
+		The occurences of an expression item can be tracked and displayed in the
+		<a href="#statistics-view">Statistics View</a>.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_edit_expression_statistics.png" />
+	</p>
+	
+	<p>
+		If a counter label is specified, the number of occurrences of the expression
+		item will be counted and displayed in the statistics view under the
+		specified label.
+	</p>
+	
+	<p>
+		If a value label is specified, the statistics view will have an entry which
+		always displays the content of the latest occurence of the expression under
+		the specified label. By default, the entire match is displayed, but a
+		pattern can be specified to rewrite the line similar to a
+		<a href="#editing-grep-expressions-grep-view">rewrite expression</a>
+		for the Grep View.
+	</p>
+	
+  <a name="pattern-strings">
+		<h2>Pattern Strings</h2>
+	</a>
+	
+	<p>
+		On several occasions, Grep Console uses <emph>patterns</emph> to allow the
+		user to configure strings which dynamically include values from the matched
+		text or from the Eclipse configuration. Aa pattern is a string
+		that may contain certain parameters which will be automatically replaced
+		with dynamic values at runtime. This can for example be used
+		to create a link action that opens a URL that is shown in the console. 
+	</p>
+	
+	<p>
+		The following parameters are available in pattern fields:
+	</p>
+	
+	<dl>
+		<dt>{line}</dt>
+		
+		<dd>
+			<p>
+				The whole line text string of the matched line.
+			</p>
+		</dd>
+		
+		<dt>{match}</dt>
+		
+		<dd>
+			<p>
+				The whole matched text.
+			</p>
+		</dd>
+		
+		<dt>{1}, {2},…</dt>
+		
+		<dd>
+			<p>
+				The text of the specified capture group.
+			</p>
+		</dd>
+		
+		<dt>{group}</dt>
+		
+		<dd>
+			<p>
+				The text of the matched capture group. Only available in context where
+				there is a specific capture group to which the pattern string refers.
+				For example, in a link action, the parameter refers to the expression
+				item to which the link is attached. If the link was attached to the
+				first capture group, then <tt>{group}</tt> is equivalent to
+				<tt>{1}</tt>.
+			</p>
+		</dd>
+
+		<dt>{<emph>groupname</emph>}</dt>
+		
+		<dd>
+			<p>
+				Instead of the group index, its name (if set) can be used as well.
+			</p>
+		</dd>
+		
+		<dt>{eclipse:<emph>variablename</emph>}</dt>
+		
+		<dd>
+			<p>
+				Provides access to the Eclipse variables also used in the arguments tab
+				of run configurations. Note that these variable names are case sensitive
+				and are usually spelled in uppercase letters, even though the run
+				configuration variable dialogue lists them in lowercase.
+			</p>
+			
+			<p>
+				For example, <tt>{eclipse:PROJECT_LOC}</tt> is the full path to the 
+				project's root directory.
+			</p>
+		</dd>
+	</dl>
+	
+  <a name="editing-actions">
+		<h2>Editing Actions</h2>
+	</a>
+	
+	<p>
+		This dialogue is used to edit a action. Most actions are assigned to links.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_edit_link.png" />
+	</p>
+	
+	<p>
+		A combo box is used to switch between no action and the available action types.
+		The dialogue will display different fields depending on the selected type.
+		Most of these fields will store <a href="#pattern=strings">pattern strings</a>.
+	</p>
+
+	<p>
+		The following action types are currently supported:
+	</p>
+	
+	<p>
+		<b>File</b>
+	</p>
+	
+	<p>
+		This type of action opens a file in an Eclipse editor. The file name (a
+		file system path), an optional base directory, line number offset
+		(column) can be specified. All fields are patterns. If no base directory
+		is specified, the project's root directory will be used. 
+	</p>
+
+	<p>
+		<b>Java type</b>
+	</p>
+	
+	<p>
+		This type of action opens a Java type in an Eclipse editor. The type is
+		taken from the project which is bound to the launch configuration that
+		started the console. The type name, an optional line number and an optional
+		offset (column) can be specified. All fields are patterns. 
+	</p>
+
+	<p>
+		<b>URL</b>
+	</p>
+	
+	<p>
+		Opens a URL, either in an internal browser or via an external program
+		chosen by the system depending on the URL - typically the system browser,
+		but different applications may be configured for specific URLs or file
+		extensions. The URL field is a pattern. If an URL without a protocol is
+		encountered, "http://" will be prefixed automatically.
+	</p>
+
+	<p>
+		<b>Command</b>
+	</p>
+	
+	<p>
+		Executes a system (shell) command. The command and working directory can
+		be specified. If no working directory is set, the current working directory
+		of Eclipse is used. Both fields are patterns. 
+	</p>
+
+	<p>
+		<b>Script</b>
+	</p>
+	
+	<p>
+		Execute a script via the Java Scripting API. The script language and code
+		can be specified. The language must be registered in the Java Scripting API.
+		A drop down list shows all available language names (several different names
+		for the same langage may be displayed).
+	</p>
+	
+	<p>
+		When the script is executed, several variables are available in the code:
+	</p>
+
+	<dl>
+		<dt>matchResult</dt>
+		
+		<dd>
+			<p>
+				The <a href="http://docs.oracle.com/javase/6/docs/api/java/util/regex/MatchResult.html" target="_blank">MatchResult</a>
+				instance for the link match.
+			</p>
+		</dd>
+		
+		<dt>groups</dt>
+		
+		<dd>
+			<p>
+				An array containing the capture group strings. The first element will
+				be the string for the whole match. Remaining elements refer to the
+				item's capture groups.
+			</p>
+		</dd>
+		
+		<dt>wholeLine</dt>
+		
+		<dd>
+			<p>
+				The whole line text string of the matched line.
+			</p>
+		</dd>
+		
+		<dt>matchedGroup</dt>
+		
+		<dd>
+			<p>
+				The index of the capture group associated with the link.
+			</p>
+		</dd>
+	</dl>
+		
+  <a name="managing-styles">
+		<h2>Managing Styles</h2>
+	</a>
+	
+	<p>
+		This dialogue can be used to create, edit and delete styles.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_manage_styles.png" />
+	</p>
+	
+	<p>
+		The dialogue lists all currently available styles by name, each prefixed with
+		a preview icon showing its foreground and background colours. A preview 
+		label below the list shows a detailed preview of the currently selected
+		style. The tooltip label displayed when the mouse cursor hovers over an
+		item for a few seconds lists the grep expressions which currently use the
+		respective style.
+	</p>
+	
+	<p>
+		The <emph>New</emph> button can be used to add a new style. Likewise, the
+		<emph>Edit</emph> button is used to edit the currently selected style. This
+		action is also available by double clicking a style in the list. Both
+		actions open the <a href="#editing-styles">edit style</a> dialogue.
+		The <emph>Delete</emph> button can be used to delete the selected style.
+		Alternatively, the delete key can be usd in the list. If the selected style
+		is still used by one or more grep expressions, a warning dialogue listing the
+		connected expressions is displayed before the style is deleted.
+	</p>
+
+	<p>
+		All settings edited in this dialogue are only saved after you click the
+		<emph>OK</emph> button. Clicking <emph>Cancel</emph> instead will discard
+		all changes.
+	</p>
+
+  <a name="editing-styles">
+		<h2>Editing Styles</h2>
+	</a>
+	
+	<p>
+		This dialogue is used to edit a single style.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_edit_style.png" />
+	</p>
+	
+	<p>
+		A text field at the top of the dialogue controls the style's name. Checkbox
+		can be used to toggle bold and italic font settings for the style.
+		Foreground and background colours, underlines and strikethrough lines as
+		well as borders can be controlled via individual lines where a checkbox
+		is used to enable or disable the respective settings an a text field is
+		provided to enter the hexadecimal code of the desired colour. A button to
+		the right of the text field shows a preview of the colour and can be clicked
+		to select a new colour via the system's colour dialogue.
+	</p>
+	
+	<p>
+		An preview label below the dialogue's controls shows a live preview
+		of the selected settings. The top and bottom line of the preview are
+		unstyled, while the centre line shows a preview of the current style
+		settings.
+	</p>
+
+  <a name="launch-configurations">
+		<h2>Launch Configurations</h2>
+	</a>
+	
+	<p>
+		Launch configurations now feature a <emph>Grep Console</emph> tab.
+	</p>
+
+	<p align="center">
+		<img src="img/screen_launch_config.png" />
+	</p>
+	
+	<p>
+		The tree view in a launch configuration only allows changing the
+		highlighting, Grep View and notification settings for the displayed items
+		(via the icons in the two columns on the right side of the view). These
+		settings are specific to the launch configuration. Each option can be set to
+		<emph>inherit</emph>, in which case the global default setting is used for
+		the corresponding item.
+	</p>
+	
+	<p>
+		The <emph>Configure expressions</emph> button below the view opens the
+		<a href="#managing-grep-expressions">Manage expressions dialogue</a> for
+		editing the grep folders and expressions. Keep in mind that these
+		items are stored globally and that changing them will affect all launch
+		configurations. 
+	</p>
+	
+  <a name="preferences">
+		<h2>Preferences</h2>
+	</a>
+
+	<p>
+		Eclipse's preference dialogue includes a section labeled
+		<emph>Grep Console</emph>.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_preferences.png" />
+	</p>
+	
+	<p>
+		The content of this section is exactly the same as that of the
+		<a href="#managing-grep-expressions">Manage expressions</a> and
+		<a href="#managing-grep-styles">Managing styles</a> dialogues.
+	</p>
+
+	<h3>Settings</h3>
+	
+	<p>
+		The preference section also has a sub section labeled <emph>Settings</emph>.
+		Here you can configure global options for Grep Console.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_preferences_settings.png" />
+	</p>
+	
+	<p>
+		Match length configurations affect the way regular expressions are tested
+		against strings. The configured match lengths specify the maximum length
+		of a line of text that is tested against a regular expression when
+		determining the matching expressions for styling lines or showing them
+		in the Grep View, respectively. If a line is longer than the specified
+		limit, only its beginning is tested against the regular expressions (but
+		when matched, the entire line is still displayed and styled). A value of 0
+		means that no limit is specified and regular expressions are always tested
+		against the entire line regardless of its length. 
+	</p>
+	
+	<p>
+		Limiting the match length can be useful because testing a large number of
+		long lines can have a significant performance impact, especially when using
+		the Grep View. If your Eclipse workbench becomes slow or even hangs when you
+		have long lines in your console, try shortening the match length limites.
+	</p>
+	
+	<p>
+		The text and background colours for the Grep View can be configured as well.
+		If they are not set, they default to the same colours used by the Eclipse
+		console.
+	</p>
+	
+	<p>
+		The modifier key used to click links in the console and Grep View can be
+		changed. By default, Ctrl is used on Windows and Linux, while Mac systems
+		default to the Command key.
+	</p>
+
+	<p>
+		For popup notifications, the foreground and background colours and the title
+		and message fonts can be configured. If they are not set, the system's
+		tooltip colours and Eclipse's standard fonts are used as defaults.
+	</p>
+		
+  <a name="grep-view">
+		<h2>Grep View</h2>
+	</a>
+	
+	<p>
+		The Grep View is used to display a subset of <emph>filtered</emph>
+		expressions for a console. The view applies the same highlighting settings
+		to these lines that are also used in the main console. Each console in the
+		console view has a corresponding console in the Grep View.
+	</p>
+
+	<p>
+		Right-clicking a line in the Grep View opens a context menu that can be used
+		to jump to the same line in the original console, scrolling it into view if
+		necessary.
+	</p>
+	
+	<p align="center">
+		<img src="img/screen_grep_view.png" />
+	</p>
+
+	<p>
+		The following actions are available in the Grep View:
+	</p>
+	
+	<dl>
+		<dt><img src="img/lock_co.gif" /> Scroll Lock</dt>
+		
+		<dd>
+			<p>
+				Similar to the standard action from Eclipse's console view. Stops the
+				console from auto scrolling when new text is added.
+			</p>
+		</dd>
+		
+		<dt><img src="img/writeout_co.gif" /> Linked to Console</dt>
+		
+		<dd>
+			<p>
+				Keeps the currently displayed consoles of the Grep View and Eclipse's
+				console view in sync. When the selected console in one of these views
+				changes, the other view automatically switches to the matching console
+				as well.
+			</p>
+		</dd>
+
+		<dt><img src="img/console_view.gif" /> Display Selected Console</dt>
+		
+		<dd>
+			<p>
+				Similar to the standard action from Eclipse's console view. Selects the
+				currently displayed console.
+			</p>
+		</dd>
+		
+		<dt><img src="img/logo_16.png" /> Manage expressions</dt>
+		
+		<dd>
+			<p>
+				Just as the same action in the main console, this opens
+				a dialogue for <a href="#managing-grep-expressions">managing grep
+				expressions</a> and <a href="#managing-styles">styles</a>. The
+				expressions and styles modified via the dialogue are affected globally,
+				but the settings for enabling or disabling expressions, showing
+				them in the Grep View and triggering notifications are specific to the
+				current launch configuration.
+			</p>
+		</dd> 
+	</dl>
+
+  <a name="statistics-view">
+		<h2>Statistics View</h2>
+	</a>
+	
+	<p>
+		The statistics view displays all the statistics information grabbed by
+		the <a href="#editing-grep-expressions-statistics">statistics settings</a>
+		of enabled expression items.
+	</p>
+
+	<p align="center">
+		<img src="img/screen_statistics_view.png" />
+	</p>
+	
+	<p>
+		The following actions are available in the statistics view:
+	</p>
+	
+	<dl>
+		<dt><img src="img/writeout_co.gif" /> Linked to Console</dt>
+		
+		<dd>
+			<p>
+				Keeps the currently displayed consoles of the Grep View and Eclipse's
+				console view in sync. When the selected console in one of these views
+				changes, the other view automatically switches to the matching console
+				as well.
+			</p>
+		</dd>
+
+		<dt><img src="img/console_view.gif" /> Display Selected Console</dt>
+		
+		<dd>
+			<p>
+				Similar to the standard action from Eclipse's console view. Selects the
+				currently displayed console.
+			</p>
+		</dd>
+	</dl>
+	
+	<a name="contact">
+		<h2>Contact</h2>
+	</a>
+	
+	<p>
+		Grep Console websites:
+	</p>
+	
+	<ul>
+		<li><a href="http://marian.schedenig.name/projects/grep-console">Official Grep Console website</a></li>
+		<li><a href="http://www.facebook.com/grepconsole">Facebook page</a></li>
+		<li><a href="http://plus.google.com/b/104433271938360658360/104433271938360658360/">Google+ page</a></li>
+	</ul>
+		
+	<p>
+		Grep Console was written by Marian Schedenig. You can find my website
+		<a href="http://marian.schedenig.name">here</a>.
+	</p>
+	
+  <a name="license">
+		<h2>Licence</h2>
+	</a>
+	
+	<p>
+		Grep Console is licensed under the terms of the
+		<a href="http://www.eclipse.org/legal/epl-v10.html">Eclipse Public License v1.0</a>.
+	</p>
+	
+	<p>
+		Copyright © 2008-2013 Marian Schedenig.
+	</p> 
+</body>
+</html>

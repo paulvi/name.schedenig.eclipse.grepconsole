@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Eclipse-SourceBundle: name.schedenig.eclipse.grepconsole;version="3.6.
+ 1";roots:="."
+Bundle-Version: 3.6.1
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: name.schedenig.eclipse.grepconsole.source
+
+

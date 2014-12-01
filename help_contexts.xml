@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?NLS TYPE="org.eclipse.help.contexts"?>
+<contexts>
+   <context id="manage_expressions">
+    	<description>Allows you to configure grep expressions and styles, and to configure which grep expressions are used by the current launch configuration.</description>
+    	<topic label="Grep Console - User Guide" href="help/index.html"/>
+    	<topic label="Managing Grep Expressions" href="help/index.html#managing-grep-expressions"/>
+    	<topic label="Editing Grep Expressions" href="help/index.html#editing-grep-expressions"/>
+    	<topic label="Managing Styles" href="help/index.html#managing-styles"/>
+   </context>
+   
+   <context id="edit_expression">
+    	<description>Allows you to configure a single grep expression.</description>
+    	<topic label="Grep Console - User Guide" href="help/index.html"/>
+    	<topic label="Editing Grep Expressions" href="help/index.html#editing-grep-expressions"/>
+    	<topic label="Managing Grep Expressions" href="help/index.html#managing-grep-expressions"/>
+    	<topic label="Managing Styles" href="help/index.html#managing-styles"/>
+    	<topic label="Pattern Strings" href="help/index.html#pattern-strings"/>
+   </context>
+   
+   <context id="edit_link">
+    	<description>Allows you to configure a link for a matched line or capture group.</description>
+    	<topic label="Grep Console - User Guide" href="help/index.html"/>
+    	<topic label="Editing Links" href="help/index.html#editing-links"/>
+    	<topic label="Managing Grep Expressions" href="help/index.html#managing-grep-expressions"/>
+    	<topic label="Editing Grep Expressions" href="help/index.html#editing-grep-expressions"/>
+    	<topic label="Managing Styles" href="help/index.html#managing-styles"/>
+    	<topic label="Pattern Strings" href="help/index.html#pattern-strings"/>
+   	</context>
+   
+   <context id="edit_style">
+    	<description>Allows you to configure a single style.</description>
+    	<topic label="Grep Console - User Guide" href="help/index.html"/>
+    	<topic label="Managing Styles" href="help/index.html#managing-styles"/>
+   </context>
+   
+   <context id="grep_view">
+    	<description>Shows a filtered list of lines from a console.</description>
+    	<topic label="Grep Console - User Guide" href="help/index.html"/>
+    	<topic label="Grep View" href="help/index.html#grep-view"/>
+   </context>
+</contexts>

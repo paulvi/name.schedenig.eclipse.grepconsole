@@ -1,0 +1,19 @@
+<toc label="Grep Console Documentation">
+  <topic label="Grep Console User Guide" href="help/index.html">
+		<topic href="help/index.html#overview" label="Overview" />
+		<topic href="help/index.html#whats-new" label="What's New" />
+		<topic href="help/index.html#installation" label="Installation" />
+		<topic href="help/index.html#updating" label="Updating" />
+		<topic href="help/index.html#console-actions" label="Console Actions" />		
+		<topic href="help/index.html#managing-grep-expressions" label="Managing Grep Expressions" />
+		<topic href="help/index.html#editing-folders" label="Editing Folders" />
+		<topic href="help/index.html#editing-grep-expressions" label="Editing Grep Expressions" />
+		<topic href="help/index.html#managing-styles" label="Managing Styles" />
+		<topic href="help/index.html#editing-styles" label="Editing Styles" />
+		<topic href="help/index.html#editing-links" label="Editing Links" />
+		<topic href="help/index.html#launch-configurations" label="Launch Configurations" />
+		<topic href="help/index.html#preferences" label="Preferences" />
+		<topic href="help/index.html#grep-view" label="Grep View" />
+		<topic href="help/index.html#license" label="License" />
+	</topic>
+</toc>
