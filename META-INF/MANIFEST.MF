@@ -5,6 +5,13 @@ Bundle-Version: 3.6.1
 Bundle-Localization: plugin
 Bundle-Name: %pluginName
 Bundle-ManifestVersion: 2
-Bundle-SymbolicName: name.schedenig.eclipse.grepconsole.source
-
+Bundle-SymbolicName: name.schedenig.eclipse.grepconsole.source;singleton:=true
+Require-Bundle: org.eclipse.jface,
+ org.eclipse.osgi,
+ org.eclipse.equinox.registry,
+ org.eclipse.swt,
+ org.eclipse.ui.workbench,
+ org.eclipse.equinox.preferences,
+ org.eclipse.ui.console
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 
